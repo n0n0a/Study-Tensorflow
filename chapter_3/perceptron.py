@@ -1,6 +1,7 @@
 import numpy as np
 import tensorflow as tf
 import keras
+import matplotlib.pyplot as plt
 
 
 def main():
@@ -18,7 +19,7 @@ def main():
     x = np.r_[x1, x2]
 
     w = np.zeros(d)
-    b = 0
+    b = 0.0
 
     def y(val):
         return step(np.dot(w, x[val]) + b)
@@ -40,7 +41,14 @@ def main():
         if classified:
             break
     print(w, b)
-    re
+
+    xs = np.linspace(-1,7,100)
+    ys = -w[0]/w[1]*xs-b/w[1]
+    plt.plot(xs, ys)
+    plt.scatter(x[:N, 0], x[:N, 1], marker='.')
+    plt.scatter(x[N:, 0], x[N:, 1], marker='^')
+    plt.grid()
+    plt.show()
 
 
 if __name__ == '__main__':
