@@ -1,6 +1,4 @@
 import numpy as np
-import tensorflow as tf
-import keras
 
 class Company:
     def __init__(self,sales,cost,persons):
