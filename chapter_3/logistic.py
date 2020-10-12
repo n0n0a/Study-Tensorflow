@@ -12,6 +12,7 @@ def main():
     d = 2
     N = 100
     mean = 5.0
+    epoch = 10
 
     x1 = rng.randn(N, d) + np.array([0.0, 0.0])
     x2 = rng.randn(N, d) + np.array([mean, mean])
@@ -41,16 +42,16 @@ def main():
     div = int(math.sqrt(N))
 
     rs = list(range(2*N))
-    random.shuffle(rs)
-
-    for r in rs:
-        total_dw += (t(r) - y(r)) * x[r]
-        total_db += (t(r) - y(r))
-        if(r+1) % div:
-            w += gamma*total_dw
-            b += gamma*total_db
-            total_dw=0
-            total_db=0
+    for _ in range(epoch):
+        random.shuffle(rs)
+        for r in rs:
+            total_dw += (t(r) - y(r)) * x[r]
+            total_db += (t(r) - y(r))
+            if(r+1) % div:
+                w += gamma*total_dw
+                b += gamma*total_db
+                total_dw=0
+                total_db=0
     print(w, b)
 
     xs = np.linspace(-1,7,100)
