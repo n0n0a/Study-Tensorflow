@@ -1,6 +1,6 @@
 import numpy as np
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Activation
+from tensorflow.keras.layers import Dense, Activation, LeakyReLU
 from tensorflow.keras.optimizers import SGD
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
@@ -34,7 +34,11 @@ def main():
 
     model = Sequential()
     model.add(Dense(n_hidden, input_dim=n_in))
-    model.add(Activation('sigmoid'))
+
+    # model.add(Activation('sigmoid'))
+    # model.add(Activation('tanh'))
+    # model.add(Activation('relu'))
+    model.add(LeakyReLU(alpha=0.01))
 
     # model.add(Dense(n_hidden))
     # model.add(Activation('sigmoid'))
