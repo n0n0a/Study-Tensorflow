@@ -26,8 +26,8 @@ Y = np.concatenate((Y1, Y2, Y3), axis=0)
 '''
 モデル設定
 '''
-W = tf.Variable(tf.zeros([M, K]))
-b = tf.Variable(tf.zeros([K]))
+W = tf.Variable(tf.zeros((M, K)))
+b = tf.Variable(tf.zeros(K))
 
 x = tf.placeholder(tf.float32, shape=[None, M])
 t = tf.placeholder(tf.float32, shape=[None, K])
